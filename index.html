@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-L09DQY6L0Z');
+  </script>
+
+  <link href="StyleSheet.css" rel="stylesheet">
+  <link rel="shortcut icon" href="images/RafaelLogo.ico" />
+  <link rel="icon" href="images/RafaelLogo.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+  <div class="topnav" id="topnav" margin-left="260px" padding="0px 10px">
+    <a margin-left="260px" href="" title="Reveal"><i class="fa fa-home"></i></a>
+    <span><i class="fa fa-folder-open" title="Open File"></i>
+      <input id="file-selector" type="file" />
+    </span>
+    <a onclick="export2csv()" title="Export to CSV"><i class="fa fa-save"></i></a>
+    <a onclick="addLabelsLine()" title="Add Labels Line"><i class="fa fa-tags"></i></a>
+    <a onclick="cutToZoom()" title="Cut to Zoomed Area"><i class="fa fa-cut"></i></a>
+    <a onclick="relativeTime()" title="Relative Time"><i class="fa fa-history"></i></a>
+    <a onclick="markDataTips()" title="Data Tips"><i class="fa fa-map-marker"></i></a>
+    <a onclick="showStat()" title="Show Statistics"><i class="fa fa-list-ol"></i></a>
+    <a href="#example" onclick="showExample()">Example File</a>
+    <a onclick="alert('Hope I helped you understand your data.\nFor anything more, contact me:\nAmihay Blau\nmail: amihay@blau-eng.co.il\nPhone: +972-54-6668902');">by Amihay Blau</a>
+  </div>
+
+  <div class="topnav" id="labelsNavBar" style="display: none;">
+    <a>Labels: </a>
+    <input name="labelsInput" id="labelsInput">
+  </div>
+
+  <div class="sidenav" id="sidenav">
+    <a href="#" class="button" onclick="MotorsSensors()">Motors & Sensors</a>
+    <a href="#" class="button" onclick="GyroCheck()">Gyros Check</a>
+    <a href="#" class="button" onclick="Designation()">Designation Quality</a>
+    <a href="#" class="button"  onclick="Stabilization()">Stabilization Quality</a>
+    <div id="xaxis_dropdown"></div>
+    <div class="checkboxesPlace" id="checkboxesPlace"></div>
+  </div>
+  <div id="explenation_text">
+    Reveal – Visualize your data<br>
+      <br>
+    •	Load CSV or text files with your data in columns.<br>
+    •	Mark checkboxes to show signals on upper or lower scope window.<br>
+    •	You can change the X-Axis to any signal from the drop down menu.<br>
+    •	Right click on signal name to apply operations and play with it.<br>
+    <br>
+    Good luck!<br>
+    Amihay Blau<br>
+  </div>
+  <div class="plot" id="plot">
+  </div>
+  <nav id="context-menu" class="context-menu">
+    <ul class="context-menu__items">
+      <li class="context-menu__item">
+        <a href="#" class="context-menu__link" data-action="Rename"><i class="context-menu-action"></i> Rename</a>
+      </li>
+      <li class="context-menu__item">
+        <a href="#" class="context-menu__link" data-action="Mult"><i class="context-menu-action"></i> Multiply</a>
+      </li>
+      <li class="context-menu__item">
+        <a href="#" class="context-menu__link" data-action="Diff"><i class="context-menu-action"></i> Diff.</a>
+      </li>
+      <li class="context-menu__item">
+        <a href="#" class="context-menu__link" data-action="Integrate"><i class="context-menu-action"></i> Integrate</a>
+      </li>
+      <li class="context-menu__item">
+        <a href="#" class="context-menu__link" data-action="filter"><i class="context-menu-action"></i> Filter Signal</a>
+      </li>
+      <li class="context-menu__item">
+        <a href="#" class="context-menu__link" data-action="Detrend"><i class="context-menu-action"></i> Detrend</a>
+      </li>
+      <li class="context-menu__item">
+        <a href="#" class="context-menu__link" data-action="removeFirst"><i class="context-menu-action"></i> Remove
+          First</a>
+      </li>
+      <li class="context-menu__item">
+        <a href="#" class="context-menu__link" data-action="removeMean"><i class="context-menu-action"></i> Remove
+          Mean</a>
+      </li>
+      <li class="context-menu__item">
+        <a href="#" class="context-menu__link" data-action="fixAngle"><i class="context-menu-action"></i> Smooth
+          Angles</a>
+      </li>
+      <li class="context-menu__item">
+        <a href="#" class="context-menu__link" data-action="cutToZoom"><i class="context-menu-action"></i> Cut to Zoomed
+          Area</a>
+      </li>
+      <li class="context-menu__item">
+        <a href="#" class="context-menu__link" data-action="dataTips"><i class="context-menu-action"></i> Data Tips</a>
+      </li>
+      <li class="context-menu__item">
+        <a href="#" class="context-menu__link" data-action="showStat"><i class="context-menu-action"></i> Show
+          Statistics</a>
+      </li>
+    </ul>
+  </nav>
+  <script src="reveal.js"></script>
+  <script src="context.js"></script>
+</body>
+
+</html>
