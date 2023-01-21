@@ -19,11 +19,11 @@ body {
   }
 
   .button {
-    background-color: #0094d2;
+    background-color: #f8f9fa;
     border: none;
     color: white;
     padding: 20px;
-    text-align: center;
+    text-align: left;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
@@ -31,22 +31,38 @@ body {
     border-radius: 12px;
   }
 
+  .headImg {
+    padding: 6px 20px;
+    width: 230px;
+  }
+
+  .image {
+    width: 100%; /* sets the width of the image to the width of the parent container */
+    max-width: 540px; /* sets the maximum width of the image to 300px */
+  }
+
   .topnav {
     width: 100%;
-    background-color: #333;
+    background-color: #f8f9fa;
     display: flex;
     align-items: center;
-    color: #fff;
+    color: #5f6368;
   }
   
   .topnav a , .topnav span , .topnav custom-file-upload{
     float: left;
-    color: #f2f2f2;
+    color: #5f6368;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 24px;
     cursor: pointer;
+    border-radius: 12px
+  }
+
+  .topnav a:hover, span:hover {
+    background-color: #f2f3f4;
+    color: #202124;
   }
 
   .topnav input {
@@ -54,7 +70,7 @@ body {
     width: 70%;
     font-size: 17px;
   }
-  
+
   .sidenav {
     height: 100%;
     width: 260px;
@@ -62,7 +78,7 @@ body {
     z-index: 1;
     top: 30;
     left: 0;
-    background-color: #f1f1f1;
+    background-color: #f8f9fa;
     overflow-x: hidden;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -71,13 +87,14 @@ body {
   .sidenav a {
     padding: 6px 6px 6px 6px;
     text-decoration: none;
-    font-size: 25px;
-    color: #fff;
+    font-size: 20px;
+    color: #5f6368;
     display: block;
   }
   
   .sidenav a:hover {
-    color: #111;
+    background-color: #f2f3f4;
+    color: #202124;
   }
   .sidenav h1{
     text-align: center;
@@ -145,7 +162,7 @@ body {
   
   /* When the checkbox is checked, add a blue background */
   .container input:checked ~ .checkmark {
-    background-color: #2196F3;
+    background-color: #f8f9fa;
   }
   
   /* Create the checkmark/indicator (hidden when not checked) */
