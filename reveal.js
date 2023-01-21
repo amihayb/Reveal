@@ -172,10 +172,6 @@ function plotTraces(traces, sp_r = 2, sp_c = 1) {
       columns: sp_c,
       pattern: 'coupled',
     },
-    xaxis: {
-      title: {
-        text: 'Time [s]',
-      }
     }
   };
 
