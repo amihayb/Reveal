@@ -70,6 +70,8 @@ function Backlash() {
   traces = [];
   traces.push(addLine("Tr_Angle", 1,1,r2d));
   traces.push(addLine("El_Angle", 2,1,r2d));
+  traces.push(addLimitLine(1,1,1));
+  traces.push(addLimitLine(1,1,-1));
   traces.push(addLimitLine(2,1,1));
   traces.push(addLimitLine(2,1,-1));
 
@@ -162,7 +164,8 @@ function addLimitLine(ax_y = 1, ax_x = 1, val) {
     line: {
       color: 'Red',
       width: 2,
-    }
+    },
+    showlegend: false,
   }
   return lim1;
 }
@@ -192,16 +195,18 @@ function plotTraces(traces, sp_r = 2, sp_c = 1) {
       columns: sp_c,
       pattern: 'coupled',
     },
-    shape: [{
-      types: 'rect',
-      xref: 'paper',
-      yref: 'paper',
-      x0: 0,
-      y0: -0.1,
-      x1: 1.01,
-      y1: 1.02,
-      line: { 'width': 5, 'color': 'black' }
-    }]
+    annotation: [
+      {
+        xref: 'paper', 
+        yref: 'paper',
+        x: 0,
+        xanchor: 'right',
+        y: 1,
+        yanchor: 'bottom',
+        text: 'test',
+        showarrow: false
+      }
+    ],
   };
 
   //https://plot.ly/javascript/configuration-options/
