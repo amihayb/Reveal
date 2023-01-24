@@ -67,13 +67,14 @@ function Stabilization() {
 function Backlash() {
   cleanUp();
 
+  let lim = 5;
   traces = [];
-  traces.push(addLine("Tr_Angle", 1,1,r2d));
-  traces.push(addLine("El_Angle", 2,1,r2d));
-  traces.push(addLimitLine(1,1,0.1));
-  traces.push(addLimitLine(1,1,-0.1));
-  traces.push(addLimitLine(2,1,0.1));
-  traces.push(addLimitLine(2,1,-0.1));
+  traces.push(addLine("Tr_Angle", 1,1,1000));
+  traces.push(addLine("El_Angle", 2,1,1000));
+  traces.push(addLimitLine(1,1,lim));
+  traces.push(addLimitLine(1,1,-lim));
+  traces.push(addLimitLine(2,1,lim));
+  traces.push(addLimitLine(2,1,-lim));
 
   plotTraces(traces);
 }
