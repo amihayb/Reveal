@@ -70,10 +70,10 @@ function Backlash() {
   traces = [];
   traces.push(addLine("Tr_Angle", 1,1,r2d));
   traces.push(addLine("El_Angle", 2,1,r2d));
-  traces.push(addLimitLine(1,1,1));
-  traces.push(addLimitLine(1,1,-1));
-  traces.push(addLimitLine(2,1,1));
-  traces.push(addLimitLine(2,1,-1));
+  traces.push(addLimitLine(1,1,0.1));
+  traces.push(addLimitLine(1,1,-0.1));
+  traces.push(addLimitLine(2,1,0.1));
+  traces.push(addLimitLine(2,1,-0.1));
 
   plotTraces(traces);
 }
