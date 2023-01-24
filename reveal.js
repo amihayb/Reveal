@@ -79,6 +79,18 @@ function Backlash() {
   plotTraces(traces);
 }
 
+function Smoothness() {
+
+  cleanUp();
+
+  traces = [];
+  traces.push(addLine("Tr_Tacho", 1, 1, r2d));
+  traces.push(addLine("El_Tacho", 2, 1, r2d));
+
+  plotTraces(traces, 2, 2);
+
+}
+
 function IMUshake() {
   cleanUp();
 
