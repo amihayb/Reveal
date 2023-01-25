@@ -203,6 +203,12 @@ function addLineBin(vName, ax, allRows) {
 function plotTraces(traces, sp_r = 2, sp_c = 1) {
   var layout = {
     height: window.innerHeight,
+    title: {
+      text: this.fileName,
+      font: {
+        size: 24
+      },
+    },
     grid: {
       rows: sp_r,
       columns: sp_c,
@@ -291,6 +297,7 @@ function showExample() {
 
 function readFile(file) {
   console.log(file);
+  this.fileName = file.name.split('.')[0];
   if (file.name.split('.').pop() == 'dat') { // Read binary file
     readBinFile(file);
     return;
