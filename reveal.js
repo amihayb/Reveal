@@ -86,20 +86,16 @@ function Smoothness() {
   traces = [];
   traces.push(addLine("Tr_Tacho", 1, 1, r2d));
   traces.push(addLine("El_Tacho", 2, 1, r2d));
+  traces.push(addLine("Tr_Vel_Command", 1, 1, r2d));
+  traces.push(addLine("El_Vel_Command", 2, 1, r2d));
+
+  /*rows["tempRow"] = plus(rows["El_Vel_Command"],0.001);
+  traces.push(addLine("tempRow", 2, 1, r2d, 'Lim', false));
+  rows["tempRow"] = plus(rows["El_Vel_Command"],-0.001);
+  traces.push(addLine("tempRow", 2, 1, r2d, 'Lim', false));*/
 
   plotTraces(traces, 2, 2);
 
-}
-
-function IMUshake() {
-  cleanUp();
-
-  traces = [];
-  traces.push(addLine("Base_Gyro_Roll", 1));
-  traces.push(addLine("Base_Gyro_Pitch", 2));
-  traces.push(addLine("Base_Gyro_Yaw", 3));
-
-  plotTraces(traces, 3);
 }
 
 function IMUshake() {
@@ -140,7 +136,7 @@ function Bits() {
 }
 
 
-function addLine(vName, ax_y = 1, ax_x = 1, factor = 1, showName, allRows) {
+function addLine(vName, ax_y = 1, ax_x = 1, factor = 1, showName, showLeg = true, allRows) {
 
   if (showName === undefined) {
     showName = vName.replace(/_/g, " ");
@@ -159,7 +155,14 @@ function addLine(vName, ax_y = 1, ax_x = 1, factor = 1, showName, allRows) {
     yaxis: 'y' + ax_y,
     name: showName,
     type: 'scatter',
+    showlegend: showLeg,
   };
+  if (!showLeg) {
+    trace.line = {
+      color: 'Red',
+      width: 2,
+    };
+  }
   return trace;
 }
 //plotFromCSV();
@@ -437,7 +440,7 @@ function readBinFile(file) {
 
   function parseLine(line) {
 
-    idx = [32, 40, 164, 168, 172, 176, 180, 184, 188, 192, 196, 216, 220, 312, 316, 320, 324, 328, 332, 336, 340, 344, 348, 352, 356];
+    idx = [32, 40, 124, 128, 164, 168, 172, 176, 180, 184, 188, 192, 196, 216, 220, 312, 316, 320, 324, 328, 332, 336, 340, 344, 348, 352, 356];
 
 
     let tLine = [];
@@ -460,7 +463,7 @@ function readBinFile(file) {
   function getHeader(OPcode) {
 
     if (OPcode == 13) {
-      header = ['Time', 'Motion_Activity', 'BRS', 'Tr_Angle', 'El_Angle', 'Tr_Tacho', 'El_Tacho', 'Tr_Gyro', 'El_Gyro', 'Base_Gyro_Roll', 'Base_Gyro_Pitch', 'Base_Gyro_Yaw', 'Tilt_Angle_Roll', 'Tilt_Angle_Pitch', 'Bit1_Tr', 'Bit1_El', 'Bit2_Tr', 'Bit2_El', 'Bit3_Tr', 'Bit3_El', 'Bit4_Tr', 'Bit4_El', 'Bit5_Tr', 'Bit5_El', 'Bit6_Tr', 'Bit6_El'];
+      header = ['Time', 'Motion_Activity', 'BRS', 'Tr_Vel_Command', 'El_Vel_Command', 'Tr_Angle', 'El_Angle', 'Tr_Tacho', 'El_Tacho', 'Tr_Gyro', 'El_Gyro', 'Base_Gyro_Roll', 'Base_Gyro_Pitch', 'Base_Gyro_Yaw', 'Tilt_Angle_Roll', 'Tilt_Angle_Pitch', 'Bit1_Tr', 'Bit1_El', 'Bit2_Tr', 'Bit2_El', 'Bit3_Tr', 'Bit3_El', 'Bit4_Tr', 'Bit4_El', 'Bit5_Tr', 'Bit5_El', 'Bit6_Tr', 'Bit6_El'];
     }
 
     return header;
@@ -970,6 +973,8 @@ function addLabelsLine() {
 let mult = (array, factor) => array.map(x => x * factor);
 
 const multArrays = (arr1, arr2) => arr1.map((num, i) => num * arr2[i]);
+
+let plus = (array, plus) => array.map(x => x + plus);
 
 let removeFirst = (array) => array.map((item, idx, all) => parseFloat(item) - parseFloat(all[0]));
 
